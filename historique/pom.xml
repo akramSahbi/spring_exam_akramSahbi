@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>akram.esprit.examen.spring</groupId>
+	<artifactId>historique</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<!-- 
+	Projet Spring multi-modulaire pr?-configur?. 
+	Contient trois modules-projets Spring d?di?s chacun ? une pr?ocuppation. La persistence, les services m?tiers et Web.
+	Pour que cette configuration soit pleinement fonctionnelle il faut :
+		1 - Avoir un serveur apache tomcat 7 ou plus.
+		2 - Ajouter au serveur un utilisateur ayant le role "manager-gui". 
+		    Ce projet est pr?configur? pour un utilisateur d?nomm? "admin" ayant un password ?quivalent ? "adminpass".
+		3 - Ajouter une entr?e "servers" dans le ficher de configuration de maven "settings.xml" avec un id ?quivalent ? "tomcat8" 
+		    et avec les donn?es d'identification de l'utilisateur "admin".
+	    4 - Changer le port d'?coute du serveur ? 18080. En cas d'?chec changer la configuration du port du plugin tomcat7 ? 8080.
+	    5 - Le projet domain n?cessite d'avoir un utilisateur mysql avec les donn?es suivantes : username ="root", password"mysqlroot".
+	    6 - Le port d'?coute du serveur mysql doit ?tre 3306.
+	    7 - Tout les projets sont pr?configur?s pour accepter les annotations Spring. Seule condition, les packages doivent commencer par tn.esprit 
+	        ou alors il faut modifier la configuration des diff?rents context Spring.
+	 -->
+	
+
+	<contributors>
+		<contributor>
+			<name>Mohamed Amine BESSROUR</name>
+			<email>mohamedamine.bessrour@esprit.tn</email>
+			<organization>Esprit</organization>
+			<organizationUrl>http://www.esprit.ens.tn/</organizationUrl>
+		</contributor>
+		<contributor>
+			<name>Wael ANIBA</name>
+			<email>wael.aniba@esprit.tn</email>
+			<organization>Esprit</organization>
+			<organizationUrl>http://www.esprit.ens.tn/</organizationUrl>
+		</contributor>
+	</contributors>
+	<inceptionYear>2015</inceptionYear>
+	<description>Projet Spring multi-modulaire pr?-configur?. Contient trois modules-projets Spring d?di?s chacun ? une pr?ocuppation. La persistence, les services m?tiers et Web. Pour que cette configuration soit pleinement fonctionnelle il faut :
+1 - Avoir un serveur apache tomcat 7 ou plus.
+2 - Ajouter au serveur un utilisateur ayant le role "manager-gui". Ce projet est pr?configur? pour un utilisateur d?nomm? "admin" ayant un password ?quivalent ? "adminpass".
+3 - Ajouter une entr?e "servers" dans le ficher de configuration de maven "settings.xml" avec un id ?quivalent ? "tomcat8"  et avec les donn?es d'identification de l'utilisateur "admin".
+4 - Changer le port d'?coute du serveur ? 18080. En cas d'?chec changer la configuration du port du plugin tomcat7 ? 8080.
+5 - Le projet domain n?cessite d'avoir un utilisateur mysql avec les donn?es suivantes : username ="root", password"mysqlroot".
+7 - Tout les projets sont pr?configur?s pour accepter les annotations Spring. Seule condition, les packages doivent commencer par tn.esprit  ou alors il faut modifier la configuration des diff?rents context Spring.</description>
+
+	<properties>
+
+
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<tomcat.http.port>18080</tomcat.http.port>
+		<tomcat.server.id>tomcat8</tomcat.server.id>
+		<tomcat.script.user>admin</tomcat.script.user>
+		<tomcat.script.user.password>adminpass</tomcat.script.user.password>
+
+		<org.springframework.version>4.2.1.RELEASE</org.springframework.version>
+		<aspectj.version>1.8.7</aspectj.version>
+		<log4j.version>1.2.15</log4j.version>
+		<mysql.connector.java.version>5.1.36</mysql.connector.java.version>
+		<hibernate.version>5.0.2.Final</hibernate.version>
+		<servlet.api.version>2.5</servlet.api.version>
+		<jsp.api.version>2.1</jsp.api.version>
+		<jstl.version>1.2</jstl.version>
+		<tomcat7.maven.plugin.version>2.2</tomcat7.maven.plugin.version>
+		<maven.eclipse.plugin.version>2.9</maven.eclipse.plugin.version>
+		<archetype.plugin.version>2.2</archetype.plugin.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>akram.esprit.examen.spring</groupId>
+				<artifactId>historique-domain</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>akram.esprit.examen.spring</groupId>
+				<artifactId>historique-service</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.connector.java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp.api.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>${maven.eclipse.plugin.version}</version>
+					<configuration>
+						<additionalProjectnatures>
+							<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						</additionalProjectnatures>
+						<additionalBuildcommands>
+							<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+						</additionalBuildcommands>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>${tomcat7.maven.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-archetype-plugin</artifactId>
+					<version>${archetype.plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<name>releases</name>
+			<url>http://git.esprit.tn:8081/nexus/content/repositories/releases/</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>snapshots</name>
+			<url>http://git.esprit.tn:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+  <modules>
+    <module>historique-domain</module>
+    <module>historique-service</module>
+    <module>historique-web</module>
+  </modules>
+</project>

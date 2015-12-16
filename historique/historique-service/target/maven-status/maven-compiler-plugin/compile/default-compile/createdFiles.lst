@@ -1,0 +1,7 @@
+akram\esprit\examen\spring\historique\service\NavigateurService.class
+akram\esprit\examen\spring\historique\contract\IPersonneService.class
+akram\esprit\examen\spring\historique\service\HistoriqueService.class
+akram\esprit\examen\spring\historique\contract\INavigateurService.class
+akram\esprit\examen\spring\historique\boot\Bootstrap.class
+akram\esprit\examen\spring\historique\service\PersonneService.class
+akram\esprit\examen\spring\historique\contract\IHistoriqueService.class

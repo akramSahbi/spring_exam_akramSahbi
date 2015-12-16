@@ -1,0 +1,12 @@
+akram\esprit\examen\spring\historique\domain\entities\Historique_navigation.class
+akram\esprit\examen\spring\historique\domain\dao\HistoriqueDao.class
+akram\esprit\examen\spring\historique\domain\contract\INavigateurDao.class
+akram\esprit\examen\spring\historique\domain\dao\PersonneDao.class
+akram\esprit\examen\spring\historique\domain\entities\Navigateur.class
+akram\esprit\examen\spring\historique\domain\entities\Navigateur_.class
+akram\esprit\examen\spring\historique\domain\dao\NavigateurDao.class
+akram\esprit\examen\spring\historique\domain\entities\Personne_.class
+akram\esprit\examen\spring\historique\domain\entities\Personne.class
+akram\esprit\examen\spring\historique\domain\entities\Historique_navigation_.class
+akram\esprit\examen\spring\historique\domain\contract\IPersonneDao.class
+akram\esprit\examen\spring\historique\domain\contract\IHistoriqueDao.class
